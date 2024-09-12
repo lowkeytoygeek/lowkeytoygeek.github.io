@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>title</title>
+    <title>Quick price check for action figures</title>
        <style>
         body {
             background-color: #333333;
@@ -16,7 +16,32 @@
 <center>
     <br>
     <br>
+    <form id="urlForm">
 
+    <input type="text" id="urlInput" name="url" placeholder="motu laser light skeletor" size=40>
+    <button type="submit">Search</button>
+</form>
+    <script>
+document.getElementById('urlForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+    window.location.href = this.href;
+    // Get the URL from the input field
+    const url = document.getElementById('urlInput').value;
+
+    const ebayUrlPrefix = "https://www.ebay.com/sch/i.html?_from=R40&_nkw=";
+    const ebayUrlSuffix = "&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1";
+
+      // Validate the URL
+      try {
+          const parsedUrl = new URL(ebayUrlPrefix + url + ebayUrlSuffix);
+          // Open the parsed URL
+          window.open(parsedUrl.href, '_self');
+      } catch (e) {
+          alert('Please check there is no unallowed characters');
+      }
+
+});
+    </script>
 </center>
 </body>
 </html>
