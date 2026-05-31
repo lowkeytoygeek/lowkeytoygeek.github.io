@@ -10,6 +10,19 @@
             font-size: 16px;
         }
 
+        #urlInput {
+          font-size: 1.2rem;
+          padding: 10px 14px;
+          width: 100%;
+          max-width: 400px;
+          box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+          font-size: 1.2rem;
+          padding: 10px 20px;
+          cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -18,11 +31,22 @@
     <br>
     <form id="urlForm">
 
-    <input type="text" id="urlInput" name="url" placeholder="motu laser light skeletor" size=40>
+    <input type="text" id="urlInput" name="url" placeholder="motu skeletor variant">
     <button type="submit">Search</button>
 </form>
     <script>
-document.getElementById('urlForm').addEventListener('submit', function(event) {
+    const placeholders = [
+      "80s knockoff figure",
+      "motu faker",
+      "tmnt sumo mike",
+      "tmnt scratch",
+      "wonder bread he-man"
+    ];
+
+    const input = document.getElementById("urlInput");
+    input.placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+        
+    document.getElementById('urlForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting the traditional way
     window.location.href = this.href;
     // Get the URL from the input field
