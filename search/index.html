@@ -1,5 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick price check for action figures</title>
+       <style>
+        body {
+            background-color: #333333;
+            font-size: 16px;
+        }
+
+        #urlInput {
+          font-size: 1.2rem;
+          padding: 10px 14px;
+          width: 100%;
+          max-width: 400px;
+          box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+          font-size: 1.2rem;
+          padding: 10px 20px;
+          cursor: pointer;
+        }
+    </style>
+</head>
 <body>
+<center>
+    <br>
+    <br>
+    <form id="urlForm">
+
+    <input type="text" id="urlInput" name="url" placeholder="motu skeletor variant">
+    <button type="submit">Search</button>
+</form>
+    <script>
+    const placeholders = [
+      "80s knockoff figure",
+      "motu faker",
+      "tmnt sumo mike",
+      "tmnt scratch",
+      "wonder bread he-man"
+    ];
+
+    const input = document.getElementById("urlInput");
+    input.placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+        
+    document.getElementById('urlForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+    window.location.href = this.href;
+    // Get the URL from the input field
+    const url = document.getElementById('urlInput').value;
+
+    const ebayUrlPrefix = "https://www.ebay.com/sch/i.html?_from=R40&_nkw=";
+    const ebayUrlSuffix = "&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1";
+
+      // Validate the URL
+      try {
+          const parsedUrl = new URL(ebayUrlPrefix + url + ebayUrlSuffix);
+          // Open the parsed URL
+          window.open(parsedUrl.href, '_self');
+      } catch (e) {
+          alert('Please check there is no unallowed characters');
+      }
+
+});
+    </script>
+</center>
 </body>
 </html>
